@@ -1,0 +1,65 @@
+@use "moduleColor.scss";
+@use "function.scss";
+
+@mixin article-style($color, $border-color, $font-size: 1rem) {
+  color: $color;
+  border: function.rem-Converter(1) solid $border-color;
+  font-size: $font-size;
+  padding: function.rem-Converter(5);
+  text-align: center;
+  @content;
+}
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  border: function.rem-Converter(1) solid darken(moduleColor.$color-primary, 8%);
+
+  & h1 {
+    color: moduleColor.$secondary-color;
+    text-decoration: underline;
+    text-decoration-color: moduleColor.$decor-color;
+    text-align: center;
+  }
+
+  & h2 {
+    @extend h1;
+    text-decoration: none;
+    padding: 1rem;
+    margin: auto;
+    border: inherit;
+  }
+
+  .main-section {
+    display: flex;
+    flex-direction: row;
+    margin: function.rem-Converter(15);
+
+    article {
+      @include article-style(
+        moduleColor.$decor-color,
+        moduleColor.$secondary-color
+      ) {
+      }
+      &:last-of-type {
+        border-left: none;
+      }
+      &:first-of-type {
+        border-right: none;
+      }
+      & .text-red {
+        color: moduleColor.$color-primary;
+      }
+      &:nth-child(2) {
+        border-right: none;
+      }
+    }
+  }
+
+  .footer-section {
+    @include article-style(moduleColor.$secondary-color,moduleColor.$decor-color,function.rem-Converter(24)) {
+      display: block;
+      margin: function.rem-Converter(15);
+    }
+  }
+}
