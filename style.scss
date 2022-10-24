@@ -40,7 +40,7 @@
         moduleColor.$decor-color,
         moduleColor.$secondary-color
       ) {
-      }
+    
       &:last-of-type {
         border-left: none;
       }
@@ -54,6 +54,7 @@
         border-right: none;
       }
     }
+  }
   }
 
   .footer-section {
